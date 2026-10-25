@@ -102,9 +102,7 @@
     "OCR",
     "Team leadership",
     "Project management",
-    "React Native",
     "Swift",
-    "Node.js",
     "GraphQL",
     "Firebase",
     "AWS",
@@ -377,10 +375,17 @@ dl{margin:0}
 /* work */
 .work-top{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
 .work-top .section-head{margin-bottom:0}
-.filters{display:flex;gap:6px;padding:5px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);flex-wrap:wrap}
-.filter{border:0;background:transparent;color:var(--fg-2);font:600 .88rem/1 var(--font-body);padding:10px 16px;border-radius:999px;cursor:pointer;transition:background-color .2s,color .2s}
+.filters{position:relative;display:flex;gap:4px;padding:5px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);max-width:100%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.filters::-webkit-scrollbar{display:none}
+.filter-pill{position:absolute;top:5px;bottom:5px;left:0;width:0;border-radius:999px;background:var(--accent);box-shadow:0 6px 18px -8px var(--accent);transition:transform .35s cubic-bezier(.3,.7,.2,1),width .35s cubic-bezier(.3,.7,.2,1);pointer-events:none;z-index:0}
+.filter{position:relative;z-index:1;flex:none;border:0;background:transparent;color:var(--fg-2);font:600 .9rem/1 var(--font-body);min-height:40px;padding:0 18px;border-radius:999px;cursor:pointer;white-space:nowrap;scroll-snap-align:center;transition:color .25s;-webkit-tap-highlight-color:transparent}
 .filter:hover{color:var(--fg)}
-.filter[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.filter[aria-pressed="true"]{color:var(--accent-ink)}
+.no-pill .filter[aria-pressed="true"]{background:var(--accent)}
+.proj.is-entering{animation:projIn .45s cubic-bezier(.2,.7,.2,1) both}
+@keyframes projIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@media (max-width:680px){.work-top{align-items:stretch}.work-top .filters{width:100%}}
+@media (max-width:480px){.filter{padding:0 12px;font-size:.86rem}.filters{gap:2px}}
 .projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 @media (max-width:1040px){.projects{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:680px){.projects{grid-template-columns:minmax(0,1fr)}}
@@ -424,7 +429,7 @@ dl{margin:0}
 .notes{display:grid;gap:9px}
 .notes li{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;align-items:baseline;color:var(--fg-2)}
 .tag{font:600 .7rem/1 var(--font-mono);padding:5px 0;width:58px;text-align:center;border-radius:6px;background:var(--surface-2);color:var(--fg-2);border:1px solid var(--line)}
-.tag.feat{color:var(--accent)}.tag.perf,.tag.ci{color:var(--accent-2)}.tag.lead,.tag.ship{color:var(--fg)}.tag.award{color:var(--warn)}.tag.teach{color:var(--ok)}
+.tag.feat{color:var(--accent)}.tag.perf,.tag.ci{color:var(--accent-2)}.tag.lead,.tag.ship{color:var(--fg)}.tag.award{color:var(--warn)}.tag.tag-teach{color:var(--ok)}
 @media (max-width:720px){.log-item{grid-template-columns:1fr;gap:14px}.log-ver{grid-auto-flow:column;justify-content:start;align-items:center;gap:14px}}
 .edu{margin-top:36px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .edu div{padding:18px 20px;border-radius:var(--r-sm);background:var(--surface);border:1px solid var(--line);display:grid;gap:4px}
@@ -452,7 +457,7 @@ dl{margin:0}
 .flow{display:flex;justify-content:center;color:var(--muted)}
 .flow svg{width:18px;height:18px}
 .layers-foot{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;padding-top:6px;font-size:.72rem;color:var(--muted)}
-@media (max-width:880px){.arch-grid{grid-template-columns:1fr}}
+@media (max-width:880px){.arch-grid{grid-template-columns:minmax(0,1fr)}}
 
 /* skills */
 .skills-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:24px;align-items:start}
@@ -747,7 +752,8 @@ footer{border-top:1px solid var(--line);padding-block:28px}
         <h2 id="workTitle">Apps in production, used every day.</h2>
         <p>A selection from 30+ releases. Several of my best projects are under NDA and aren't listed here.</p>
       </div>
-      <div class="filters" role="group" aria-label="Filter projects">
+      <div class="filters no-pill" id="filters" role="group" aria-label="Filter projects">
+        <span class="filter-pill" aria-hidden="true"></span>
         <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
         <button class="filter" type="button" data-filter="ai" aria-pressed="false">AI</button>
         <button class="filter" type="button" data-filter="fintech" aria-pressed="false">Fintech</button>
@@ -874,8 +880,8 @@ footer{border-top:1px solid var(--line);padding-block:28px}
           <h3>Flutter Trainer <span class="at">@ ICT Division</span></h3>
           <p class="log-where">Chattogram, Bangladesh · Part-time</p>
           <ul class="notes">
-            <li><span class="tag teach">teach</span><span>Planned and taught a cross-platform mobile development course.</span></li>
-            <li><span class="tag teach">teach</span><span>Covered OOP, Flutter widgets and animations, and tracked trainee progress.</span></li>
+            <li><span class="tag tag-teach">teach</span><span>Planned and taught a cross-platform mobile development course.</span></li>
+            <li><span class="tag tag-teach">teach</span><span>Covered OOP, Flutter widgets and animations, and tracked trainee progress.</span></li>
           </ul>
         </div>
       </li>
@@ -958,7 +964,7 @@ footer{border-top:1px solid var(--line);padding-block:28px}
     <div class="skill-grid">
       <article class="skill-card">
         <div class="skill-head"><span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg></span><h3>Mobile &amp; Frameworks</h3></div>
-        <ul class="skill-chips"><li class="core">Flutter</li><li class="core">Android SDK</li><li>Jetpack Compose</li><li>React Native</li><li>BLoC · GetX · Provider</li><li>Clean Architecture</li></ul>
+        <ul class="skill-chips"><li class="core">Flutter</li><li class="core">Android SDK</li><li>Jetpack Compose</li><li>XML Layouts</li><li>BLoC · GetX · Provider</li><li>Clean Architecture</li></ul>
       </article>
       <article class="skill-card">
         <div class="skill-head"><span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></span><h3>Languages</h3></div>
@@ -966,7 +972,7 @@ footer{border-top:1px solid var(--line);padding-block:28px}
       </article>
       <article class="skill-card">
         <div class="skill-head"><span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg></span><h3>Backend &amp; Databases</h3></div>
-        <ul class="skill-chips"><li>Node.js</li><li class="core">REST APIs</li><li>GraphQL</li><li>MySQL</li><li class="core">SQLite</li><li class="core">Firebase</li><li>Supabase</li><li>Room</li><li>Hive</li></ul>
+        <ul class="skill-chips"><li class="core">REST APIs</li><li>GraphQL</li><li class="core">SQLite</li><li class="core">Firebase</li><li>Supabase</li><li>Room</li><li>Hive</li></ul>
       </article>
       <article class="skill-card">
         <div class="skill-head"><span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18.5a4.5 4.5 0 1 1 1-8.9 6 6 0 0 1 11.4 2.2A3.6 3.6 0 0 1 18 18.5Z"/></svg></span><h3>Cloud, DevOps &amp; Tooling</h3></div>
@@ -1147,13 +1153,33 @@ footer{border-top:1px solid var(--line);padding-block:28px}
   document.addEventListener('visibilitychange',function(){document.hidden?stop():start()});
   start();
 
-  /* project filter */
-  var filters=[].slice.call(document.querySelectorAll('.filter')),projects=[].slice.call(document.querySelectorAll('.proj'));
+  /* project filter: sliding pill + animated cards */
+  var filtersEl=document.getElementById('filters'),pill=filtersEl.querySelector('.filter-pill');
+  var filters=[].slice.call(filtersEl.querySelectorAll('.filter')),projects=[].slice.call(document.querySelectorAll('.proj'));
+  function movePill(btn,instant){
+    if(!pill||!btn)return;
+    if(instant)pill.style.transition='none';
+    pill.style.width=btn.offsetWidth+'px';
+    pill.style.transform='translateX('+btn.offsetLeft+'px)';
+    if(instant){pill.offsetWidth;pill.style.transition='';}
+    filtersEl.classList.remove('no-pill');
+  }
+  function current(){return filters.filter(function(f){return f.getAttribute('aria-pressed')==='true'})[0]}
   filters.forEach(function(f){f.addEventListener('click',function(){
     var v=f.dataset.filter;
     filters.forEach(function(x){x.setAttribute('aria-pressed',x===f)});
-    projects.forEach(function(p){p.hidden=!(v==='all'||p.dataset.cat===v)});
+    movePill(f,false);
+    try{f.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest',inline:'center'})}catch(e){}
+    projects.forEach(function(p){
+      var show=(v==='all'||p.dataset.cat===v);
+      p.classList.remove('is-entering');
+      p.hidden=!show;
+      if(show&&!reduce){p.offsetWidth;p.classList.add('is-entering')}
+    });
   })});
+  window.addEventListener('resize',function(){movePill(current(),true)});
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){movePill(current(),true)})}
+  movePill(current(),true);
 
   /* copy buttons */
   var toast=document.getElementById('toast'),tt;
