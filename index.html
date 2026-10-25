@@ -1357,11 +1357,11 @@ button.layer.is-active{border-color:var(--accent);background:color-mix(in srgb,v
           <div><strong data-gh="repos" data-count>62</strong><span>public repos</span></div>
           <div><strong data-gh="followers" data-count>32</strong><span>followers</span></div>
         </div>
-        <p class="os-sub">Recently updated</p>
+        <p class="os-sub">Pinned projects</p>
         <ul class="os-recent" id="ghRecent">
           <li><a href="https://github.com/nmkawcher/WallpaperApp" target="_blank" rel="noopener">WallpaperApp</a><span>Dart · MVVM, Provider, DI</span></li>
           <li><a href="https://github.com/nmkawcher/Covid-Tracker" target="_blank" rel="noopener">Covid-Tracker</a><span>Java · live COVID API</span></li>
-          <li><a href="https://github.com/nmkawcher/LocalMarket-Inventory" target="_blank" rel="noopener">LocalMarket-Inventory</a><span>Inventory app</span></li>
+          <li><a href="https://github.com/nmkawcher/Export-Data-Android-To-Excel" target="_blank" rel="noopener">Export-Data-Android-To-Excel</a><span>Java · 216 forks</span></li>
         </ul>
       </article>
     </div>
@@ -1890,14 +1890,10 @@ button.layer.is-active{border-color:var(--accent);background:color-mix(in srgb,v
   if(window.fetch){
     Promise.all([
       fetch('https://api.github.com/users/nmkawcher').then(function(r){if(!r.ok)throw 0;return r.json()}),
-      fetch('https://api.github.com/repos/nmkawcher/Export-Data-Android-To-Excel').then(function(r){if(!r.ok)throw 0;return r.json()}),
-      fetch('https://api.github.com/users/nmkawcher/repos?sort=pushed&per_page=30').then(function(r){if(!r.ok)throw 0;return r.json()})
+      fetch('https://api.github.com/repos/nmkawcher/Export-Data-Android-To-Excel').then(function(r){if(!r.ok)throw 0;return r.json()})
     ]).then(function(res){
       setGh('repos',res[0].public_repos);setGh('followers',res[0].followers);
       setGh('forks',res[1].forks_count);setGh('stars',res[1].stargazers_count);
-      var list=$('#ghRecent');
-      var repos=res[2].filter(function(r){return !r.fork&&!/github\.io|privacy|landing|-doc|^\.github$/i.test(r.name)});
-      if(list&&repos.length>=3){list.innerHTML=repos.slice(0,3).map(function(r){return '<li><a href="'+r.html_url+'" target="_blank" rel="noopener">'+esc(r.name)+'</a><span>'+(r.language?esc(r.language)+' · ':'')+ago(r.pushed_at)+'</span></li>'}).join('')}
       $$('[data-live]').forEach(function(p){p.classList.add('on')});
     }).catch(function(){$$('[data-live] span').forEach(function(s){s.textContent='Snapshot'})});
   }
