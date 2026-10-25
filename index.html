@@ -319,7 +319,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 .c3{bottom:26px;left:52px;border-bottom-width:3px;border-left-width:3px;border-bottom-left-radius:8px}
 .c4{bottom:26px;right:52px;border-bottom-width:3px;border-right-width:3px;border-bottom-right-radius:8px}
 .s-line{position:absolute;left:56px;right:56px;height:2px;background:var(--accent-2);box-shadow:0 0 12px var(--accent-2);top:30px;animation:scan 2.4s ease-in-out infinite alternate}
-@keyframes scan{to{top:168px}}
+@keyframes scan{from{transform:translateY(0)}to{transform:translateY(138px)}}
+.paused,.paused *{animation-play-state:paused!important}
 .s-progress{height:6px;border-radius:6px;background:var(--scr-line);overflow:hidden}
 .s-progress i{display:block;height:100%;width:75%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:6px}
 .s-toast{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:color-mix(in srgb,var(--ok) 14%,var(--scr-card));border:1px solid color-mix(in srgb,var(--ok) 35%,transparent);font-size:.74rem}
@@ -333,8 +334,10 @@ ul,ol{margin:0;padding:0;list-style:none}
 .s-ocr{margin-top:6px;font:500 .7rem/1.6 var(--font-mono)}
 .device-ui{display:flex;align-items:center;gap:14px;position:relative}
 .dots{display:flex;gap:6px}
-.dot{width:8px;height:8px;padding:0;border-radius:99px;border:0;background:var(--line-strong);cursor:pointer;transition:width .3s,background-color .3s}
-.dot.is-active{width:24px;background:var(--accent)}
+.dots{gap:0}
+.dot{position:relative;width:24px;height:24px;padding:0;border:0;background:transparent;cursor:pointer}
+.dot::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:99px;background:var(--line-strong);transform:translate(-50%,-50%);transition:width .3s,background-color .3s}
+.dot.is-active::after{width:22px;background:var(--accent)}
 .device-label{font:500 .78rem/1.3 var(--font-mono);color:var(--muted);min-width:0;text-align:center}
 .device-label b{color:var(--fg-2);font-weight:500}
 
@@ -684,7 +687,8 @@ button.layer.is-active{border-color:var(--accent);background:color-mix(in srgb,v
 /* changelog filters */
 .log-filters{display:flex;flex-wrap:wrap;gap:8px;margin:-16px 0 28px}
 .log-filter{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line-strong);background:transparent;color:var(--fg-2);font:500 .82rem/1 var(--font-mono);cursor:pointer;transition:border-color .2s,background-color .2s,color .2s}
-.log-filter span{opacity:.6}
+.log-filter span{color:var(--muted)}
+.log-filter[aria-pressed="true"] span{color:inherit;opacity:.75}
 .log-filter:hover{border-color:var(--accent);color:var(--fg)}
 .log-filter[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .notes li,.log-item{transition:opacity .3s}
@@ -759,7 +763,7 @@ button.layer.is-active{border-color:var(--accent);background:color-mix(in srgb,v
 
 <header class="site-header" id="top">
   <nav class="wrap nav" aria-label="Main">
-    <a class="brand" href="#top" aria-label="NM Kawcher, back to top"><span class="brand-mark">NK</span>NM Kawcher</a>
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">NK</span>NM Kawcher</a>
     <div class="nav-links" id="navLinks">
       <a href="#work">Work</a>
       <a href="#case-studies">Case studies</a>
@@ -954,7 +958,7 @@ button.layer.is-active{border-color:var(--accent);background:color-mix(in srgb,v
         <p class="proj-desc">Admin app for clubs and governing bodies to run classes and events. QR or manual attendance, real-time tracking and secure MFA login.</p>
         <div class="proj-metric"><span class="metric">★ 4.5 on Google Play</span><span class="metric alt">Architected from scratch</span></div>
         <div class="chips"><span>Flutter</span><span>BLoC</span><span>Clean Architecture</span><span>MFA</span><span>Fastlane</span></div>
-        <div class="proj-links"><button class="proj-cs" type="button" data-cs="vscanner">Case study</button><button class="proj-cs" type="button" data-cs="belyfted">Case study</button><button class="proj-cs" type="button" data-cs="kothay">Case study</button><a href="https://apps.apple.com/my/app/justgo-admin-tools/id6741153704" target="_blank" rel="noopener">App Store <svg><use href="#i-arrow"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.justgo.admintools" target="_blank" rel="noopener">Google Play <svg><use href="#i-arrow"/></svg></a></div>
+        <div class="proj-links"><a href="https://apps.apple.com/my/app/justgo-admin-tools/id6741153704" target="_blank" rel="noopener">App Store <svg><use href="#i-arrow"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.justgo.admintools" target="_blank" rel="noopener">Google Play <svg><use href="#i-arrow"/></svg></a></div>
       </article>
 
       <article class="proj" data-cat="fintech">
@@ -962,7 +966,7 @@ button.layer.is-active{border-color:var(--accent);background:color-mix(in srgb,v
         <p class="proj-desc">Fast, secure international money transfer with live exchange rates, beneficiary management, downloadable receipts and KYC compliance.</p>
         <div class="proj-metric"><span class="metric">Live FX rates</span><span class="metric alt">KYC + 2FA</span></div>
         <div class="chips"><span>Flutter</span><span>REST</span><span>GetX</span><span>Firebase</span></div>
-        <div class="proj-links"><a href="https://apps.apple.com/gb/app/belyfted-remit-money-transfer/id1611496688" target="_blank" rel="noopener">App Store <svg><use href="#i-arrow"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.belyfted" target="_blank" rel="noopener">Google Play <svg><use href="#i-arrow"/></svg></a></div>
+        <div class="proj-links"><button class="proj-cs" type="button" data-cs="belyfted">Case study</button><a href="https://apps.apple.com/gb/app/belyfted-remit-money-transfer/id1611496688" target="_blank" rel="noopener">App Store <svg><use href="#i-arrow"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.belyfted" target="_blank" rel="noopener">Google Play <svg><use href="#i-arrow"/></svg></a></div>
       </article>
 
       <article class="proj" data-cat="ai">
@@ -970,7 +974,7 @@ button.layer.is-active{border-color:var(--accent);background:color-mix(in srgb,v
         <p class="proj-desc">A document scanner I built and published under Vertex Station. Auto edge detection and cleanup, on-device OCR, AI text extraction, e-signatures and 16 PDF and QR tools.</p>
         <div class="proj-metric"><span class="metric">On-device OCR</span><span class="metric alt">AI text extraction</span></div>
         <div class="chips"><span>OCR</span><span>In-app purchases</span><span>Google Sign-In</span><span>15 languages</span><span>PDF tools</span></div>
-        <div class="proj-links"><a href="https://play.google.com/store/apps/details?id=com.vscanner.ai" target="_blank" rel="noopener">Google Play <svg><use href="#i-arrow"/></svg></a></div>
+        <div class="proj-links"><button class="proj-cs" type="button" data-cs="vscanner">Case study</button><a href="https://play.google.com/store/apps/details?id=com.vscanner.ai" target="_blank" rel="noopener">Google Play <svg><use href="#i-arrow"/></svg></a></div>
       </article>
 
       <article class="proj" data-cat="saas">
@@ -978,7 +982,7 @@ button.layer.is-active{border-color:var(--accent);background:color-mix(in srgb,v
         <p class="proj-desc">Sales team management with live location tracking, check-in and breaks, shop visits, orders and photo-proof reports. Works offline and syncs in the background.</p>
         <div class="proj-metric"><span class="metric">Offline-first</span><span class="metric alt">Background location sync</span></div>
         <div class="chips"><span>Flutter</span><span>Google Maps</span><span>Geofencing</span><span>FCM</span></div>
-        <div class="proj-links"><a href="https://play.google.com/store/apps/details?id=dev.kothay.app" target="_blank" rel="noopener">Google Play <svg><use href="#i-arrow"/></svg></a></div>
+        <div class="proj-links"><button class="proj-cs" type="button" data-cs="kothay">Case study</button><a href="https://play.google.com/store/apps/details?id=dev.kothay.app" target="_blank" rel="noopener">Google Play <svg><use href="#i-arrow"/></svg></a></div>
       </article>
 
       <article class="proj" data-cat="fintech">
@@ -1734,6 +1738,15 @@ button.layer.is-active{border-color:var(--accent);background:color-mix(in srgb,v
       tilt.style.setProperty('--ry',(x*14).toFixed(2)+'deg');tilt.style.setProperty('--rx',(-y*10).toFixed(2)+'deg');
     });
     stage.addEventListener('pointerleave',function(){tilt.style.setProperty('--ry','0deg');tilt.style.setProperty('--rx','0deg')});
+  }
+
+  /* pause decorative animations while off screen */
+  if('IntersectionObserver' in window){
+    var pio=new IntersectionObserver(function(es){es.forEach(function(en){
+      en.target.classList.toggle('paused',!en.isIntersecting);
+      var svg=en.target.querySelector('svg');if(svg&&svg.pauseAnimations){en.isIntersecting?svg.unpauseAnimations():svg.pauseAnimations()}
+    })});
+    $$('.device-stage,.cs-ride,.status').forEach(function(el){pio.observe(el)});
   }
 
   /* stats count up when they come into view (they start at their final value) */
