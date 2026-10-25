@@ -102,7 +102,20 @@
     "AI-powered mobile apps",
     "OCR",
     "Team leadership",
-    "Project management"
+    "Project management",
+    "React Native",
+    "Swift",
+    "TypeScript",
+    "Spring Boot",
+    "Node.js",
+    "GraphQL",
+    "Firebase",
+    "AWS",
+    "GCP",
+    "Docker",
+    "Google ML Kit",
+    "LLM integration",
+    "RAG"
    ],
    "sameAs": [
     "https://www.linkedin.com/in/nmkawcher112/",
@@ -462,6 +475,22 @@ dl{margin:0}
 .beyond li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-weight:500}
 .beyond li:last-child{border-bottom:0}
 .beyond li span{font:500 .74rem/1.6 var(--font-mono);color:var(--muted);text-align:right}
+
+/* skills */
+.skill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:1000px){.skill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.skill-grid{grid-template-columns:minmax(0,1fr)}}
+.skill-card{display:grid;gap:18px;align-content:start;padding:24px;border-radius:var(--r-md);background:var(--surface);border:1px solid var(--line);transition:border-color .3s,transform .3s;min-width:0}
+.skill-card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.skill-head{display:flex;align-items:center;gap:14px}
+.skill-head h3{font-size:1.2rem;font-weight:700}
+.skill-ic{display:grid;place-items:center;width:44px;height:44px;flex:none;border-radius:12px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+.skill-ic svg{width:22px;height:22px}
+.skill-chips{display:flex;flex-wrap:wrap;gap:8px}
+.skill-chips li{font:500 .84rem/1 var(--font-body);padding:9px 12px;border-radius:9px;border:1px solid var(--line-strong);color:var(--fg-2);background:var(--bg-2)}
+.skill-chips li.core{color:var(--fg);border-color:color-mix(in srgb,var(--accent) 45%,transparent);background:color-mix(in srgb,var(--accent) 10%,var(--bg-2))}
+.skill-legend{display:flex;align-items:center;gap:8px;margin-top:18px;font:500 .8rem/1.4 var(--font-mono);color:var(--muted)}
+.dot-core{width:10px;height:10px;border-radius:3px;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);background:color-mix(in srgb,var(--accent) 25%,transparent)}
 
 /* teaching */
 .teach-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
@@ -929,39 +958,36 @@ footer{border-top:1px solid var(--line);padding-block:28px}
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Skills</p>
-      <h2 id="skillsTitle">Toolchain check: all green.</h2>
+      <h2 id="skillsTitle">Skills &amp; Technologies</h2>
+      <p>The tools I use to design, build, test and ship apps, from the phone to the cloud.</p>
     </div>
-    <div class="skills-grid">
-      <div class="term" role="img" aria-label="Skills listed as flutter doctor output: Flutter and Dart, Android toolchain with Kotlin and Java, web with React, backend with Python, Firebase and Supabase, state management BLoC Provider GetX, Clean Architecture MVVM MVC, integrations REST Firebase Google Maps Supabase in-app purchases SQLite, release to Play Store App Store TestFlight Fastlane, CI/CD with Azure DevOps and Git, AI features in production apps such as on-device OCR and AI text extraction.">
-        <div class="term-bar"><i></i><i></i><i></i><span>~/kawcher — zsh</span></div>
-<pre><span class="t-p">$</span> flutter doctor --engineer=kawcher
-<span class="t-m">Doctor summary (to see all details, run with -v):</span>
-<span class="t-ok">[✓]</span> <span class="t-b">Flutter &amp; Dart</span> <span class="t-m">(6+ years, stable)</span>
-<span class="t-ok">[✓]</span> <span class="t-b">Android toolchain</span> <span class="t-m">Kotlin · Java · Jetpack Compose</span>
-<span class="t-ok">[✓]</span> <span class="t-b">Web</span> <span class="t-m">React</span>
-<span class="t-ok">[✓]</span> <span class="t-b">Backend</span> <span class="t-m">Python · REST API design · Firebase · Supabase</span>
-<span class="t-ok">[✓]</span> <span class="t-b">State management</span> <span class="t-m">BLoC · Provider · GetX</span>
-<span class="t-ok">[✓]</span> <span class="t-b">Architecture</span> <span class="t-m">Clean · MVVM · MVC · DI</span>
-<span class="t-ok">[✓]</span> <span class="t-b">Integrations</span> <span class="t-m">REST · Firebase · Maps · Supabase · IAP · SQLite</span>
-<span class="t-ok">[✓]</span> <span class="t-b">Release</span> <span class="t-m">Play Store · App Store · TestFlight · Fastlane</span>
-<span class="t-ok">[✓]</span> <span class="t-b">CI/CD &amp; tools</span> <span class="t-m">Azure DevOps · Git · Crashlytics · Postman · Figma</span>
-<span class="t-ok">[✓]</span> <span class="t-b">Testing</span> <span class="t-m">Unit · Widget · Integration</span>
-<span class="t-ok">[✓]</span> <span class="t-b">AI in apps</span> <span class="t-m">On-device OCR · AI text extraction · LLM APIs</span>
-
-<span class="t-ok">•</span> No issues found. Ready to ship.</pre>
-      </div>
-      <div class="beyond">
-        <h3>Beyond the code</h3>
-        <ul>
-          <li>Team leadership<span>grew a team 1 → 5</span></li>
-          <li>Project management<span>plan · track · deliver</span></li>
-          <li>Code review &amp; quality<span>daily practice</span></li>
-          <li>Requirements analysis<span>roadmaps</span></li>
-          <li>System design<span>mobile + API</span></li>
-          <li>Hiring &amp; mentoring<span>interns → devs</span></li>
-        </ul>
-      </div>
+    <div class="skill-grid">
+      <article class="skill-card">
+        <div class="skill-head"><span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3"/></svg></span><h3>Mobile &amp; Frameworks</h3></div>
+        <ul class="skill-chips"><li class="core">Flutter</li><li class="core">Android SDK</li><li>Jetpack Compose</li><li>React Native</li><li>React</li><li>Java Spring</li><li>BLoC · GetX · Provider</li><li>Clean Architecture</li></ul>
+      </article>
+      <article class="skill-card">
+        <div class="skill-head"><span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg></span><h3>Languages</h3></div>
+        <ul class="skill-chips"><li class="core">Dart</li><li class="core">Java</li><li class="core">Kotlin</li><li>JavaScript / TypeScript</li><li>Swift</li><li>Python</li></ul>
+      </article>
+      <article class="skill-card">
+        <div class="skill-head"><span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3v-13M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg></span><h3>Backend &amp; Databases</h3></div>
+        <ul class="skill-chips"><li>Spring Boot</li><li>Node.js</li><li class="core">REST APIs</li><li>GraphQL</li><li>MySQL</li><li class="core">SQLite</li><li class="core">Firebase</li><li>Supabase</li><li>Room</li><li>Hive</li></ul>
+      </article>
+      <article class="skill-card">
+        <div class="skill-head"><span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18.5a4.5 4.5 0 1 1 1-8.9 6 6 0 0 1 11.4 2.2A3.6 3.6 0 0 1 18 18.5Z"/></svg></span><h3>Cloud, DevOps &amp; Tooling</h3></div>
+        <ul class="skill-chips"><li>AWS</li><li>GCP</li><li>Docker</li><li class="core">CI/CD</li><li class="core">Azure DevOps</li><li class="core">Fastlane</li><li>SonarQube</li><li>Mockito</li><li class="core">Git</li></ul>
+      </article>
+      <article class="skill-card">
+        <div class="skill-head"><span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M12 8l1.6 2.4L16 12l-2.4 1.6L12 16l-1.6-2.4L8 12l2.4-1.6Z"/></svg></span><h3>AI &amp; ML</h3></div>
+        <ul class="skill-chips"><li class="core">LLM Integration</li><li class="core">On-device ML</li><li class="core">Google ML Kit</li><li>RAG</li><li>Prompt Engineering</li><li>NLP</li></ul>
+      </article>
+      <article class="skill-card">
+        <div class="skill-head"><span class="skill-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.5a6.5 6.5 0 0 1 3 5.5"/></svg></span><h3>Leadership &amp; Delivery</h3></div>
+        <ul class="skill-chips"><li class="core">Team Leadership</li><li class="core">Project Management</li><li>Code Review</li><li>System Design</li><li>Requirements Analysis</li><li>Hiring &amp; Mentoring</li><li class="core">App Store &amp; Play Releases</li></ul>
+      </article>
     </div>
+    <p class="skill-legend"><span class="dot-core"></span>Highlighted: used daily in production</p>
   </div>
 </section>
 
